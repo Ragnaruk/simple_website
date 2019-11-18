@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Крипто-Хаб</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <header class="header">
+        <img src="https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fspecials-images.forbesimg.com%2Fdam%2Fimageserve%2F1163843544%2F960x0.jpg%3Ffit%3Dscale" alt="" class="logo"/>
+
+        <div class="header-text">
+            {% block header %}
+            {% endblock %}
+        </div>
+    </header>
+
+    <main class="main">
+        <aside class="sidebar">
+            <ul class="sidebar-list">
+              <li class="sidebar-item">
+                  <a class="sidebar-button" href="{{ url_for('graph') }}">График</a>
+              </li>
+              <li class="sidebar-item">
+                  <a class="sidebar-button"  href="{{ url_for('news') }}">Новости</a>
+              </li>
+              <li class="sidebar-item">
+                  <a class="sidebar-button"  href="{{ url_for('stats') }}">Статистика</a>
+              </li>
+              <li class="sidebar-item">
+                  <a class="sidebar-button"  href="{{ url_for('index') }}">Индекс</a>
+              </li>
+            </ul>
+        </aside>
+
+        <section class="content">
+            {% block content %}
+            {% endblock %}
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>
+            © Макаров Дмитрий, Пивко Артем, Волков Михаил. 2019.
+        </p>
+    </footer>
+</body>
+
+</html>
