@@ -1,14 +1,20 @@
 {% extends 'base.html' %}
-
-{% block header %}
-    Статистика
-{% endblock %}
+{% include 'header.html' %}
 
 {% block content %}
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sumenda potius quam expetenda. Nihil opus est exemplis hoc facere longius.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sumenda potius quam expetenda. Nihil opus est exemplis hoc facere longius.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sumenda potius quam expetenda. Nihil opus est exemplis hoc facere longius.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sumenda potius quam expetenda. Nihil opus est exemplis hoc facere longius.
-    </p>
+    <section class="section section-md">
+        <div class="container">
+
+            <h3 class="text-center">Статистика</h3>
+
+            <div class="row row-xl-60 offset-xl wow fadeInUp" data-wow-delay=". {{ n }}s">
+                {% for n in range(10) %}
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sumenda potius quam
+                        expetenda. Nihil opus est exemplis hoc facere longius.
+                    </p>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
 {% endblock %}

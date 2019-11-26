@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
-
-{% block header %}
-    График
-{% endblock %}
+{% include 'header.html' %}
 
 {% block content %}
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sumenda potius quam expetenda. Nihil opus est exemplis hoc facere longius.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sumenda potius quam expetenda. Nihil opus est exemplis hoc facere longius.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sumenda potius quam expetenda. Nihil opus est exemplis hoc facere longius.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sumenda potius quam expetenda. Nihil opus est exemplis hoc facere longius.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sumenda potius quam expetenda. Nihil opus est exemplis hoc facere longius.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sumenda potius quam expetenda. Nihil opus est exemplis hoc facere longius.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sumenda potius quam expetenda. Nihil opus est exemplis hoc facere longius.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sumenda potius quam expetenda. Nihil opus est exemplis hoc facere longius.
-    </p>
+    <section class="section section-md">
+        <div class="container">
+
+            <h3 class="text-center">График</h3>
+
+            <div class="row row-xl-60 offset-xl wow fadeInUp" data-wow-delay=". {{ n }}s">
+                <div class="layer" data-depth=".055">
+                    <img src="{{ url_for('static', filename='images/layout_graph.png') }}"
+                         alt="" width="100%"/>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}
