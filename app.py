@@ -11,11 +11,6 @@ def landing():
     return render_template('landing.html')
 
 
-@app.route('/index')
-def index():
-    return render_template('index.html')
-
-
 @app.route('/graph')
 def graph():
     return render_template('graph.html')
