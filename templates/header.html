@@ -1,22 +1,39 @@
 {% block header %}
-<section class="section">
-    <div class="row align-items-center header">
-        <div class="col-lg-4 text-center text-lg-left">
-            <!--Brand-->
-            <a class="brand" href="index">
-                <img class="brand-logo-dark"
-                     src="{{ url_for('static', filename='images/logo_bitcoin.png') }}"
-                     alt="" width="240" height="240"/>
-                <img class="brand-logo-light"
-                     src="{{ url_for('static', filename='images/logo_bitcoin.png') }}"
-                     alt="" width="240" height="240"/>
-            </a>
-        </div>
-        <div class="col-lg-4 text-center">
-            <div class="intro-caption__title">
-                КриптоХаб
+    <section class="section">
+        <div class="row align-items-center header">
+            <div class="col-lg-4 text-center text-lg-left">
+                <!--Brand-->
+                <a class="brand" href="/">
+                    <img class="brand-logo-dark"
+                         src="{{ url_for('static', filename='images/logo_bitcoin.png') }}"
+                         alt="" width="150" height="150"/>
+                    <img class="brand-logo-light"
+                         src="{{ url_for('static', filename='images/logo_bitcoin.png') }}"
+                         alt="" width="150" height="150"/>
+                </a>
+            </div>
+            <div class="col-lg-4 text-center">
+                <div class="intro-caption__title">
+                    КриптоХаб
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
+    <section class="section sticky">
+        <div class="row align-items-center header" style="padding: 0 !important;">
+            <div class="col-lg-4 text-center navigator-button nav-button text-white"
+                 onclick="location.href='graph'">
+                График
+            </div>
+            <div class="col-lg-4 text-center navigator-button nav-button text-white"
+                 onclick="location.href='news'">
+                Новости
+            </div>
+            <div class="col-lg-4 text-center navigator-button nav-button text-white"
+                 onclick="location.href='stats'">
+                Статистика
+            </div>
+        </div>
+    </section>
 {% endblock %}

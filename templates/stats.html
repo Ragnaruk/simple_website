@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
-{% include 'header.html' %}
 
 {% block content %}
+    {% include 'header.html' %}
+
     <section class="section section-md">
         <div class="container">
 
             <h3 class="text-center">Статистика</h3>
 
-            <div class="row row-xl-60 offset-xl wow fadeInUp" data-wow-delay=". {{ n }}s">
+            <div class="row row-xl-60 offset-xl wow fadeInUp text" data-wow-delay=". {{ n }}s">
                 {% for n in range(10) %}
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sumenda potius quam
@@ -17,4 +18,5 @@
             </div>
         </div>
     </section>
+
 {% endblock %}

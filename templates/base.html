@@ -14,6 +14,12 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/fonts.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel='stylesheet'
+          href='https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.0.3/angular-material.min.css'>
+    <link rel="stylesheet"
+          href="//cdn.materialdesignicons.com/1.4.57/css/materialdesignicons.min.css">
     <style>.ie-panel {
         display: none;
         background: #212121;
@@ -93,9 +99,6 @@
     </div>
 </div>
 <div class="page">
-    {% block header %}
-    {% endblock %}
-
     {% block content %}
     {% endblock %}
 
@@ -104,7 +107,7 @@
             <div class="row row-15 align-items-center justify-content-lg-between">
                 <div class="col-lg-4 text-center text-lg-left">
                     <!--Brand-->
-                    <a class="brand" href="index">
+                    <a class="brand" href="/">
                         <img class="brand-logo-dark"
                              src="{{ url_for('static', filename='images/logo_bitcoin.png') }}"
                              alt="" width="240" height="240"/>
@@ -113,15 +116,15 @@
                              alt="" width="240" height="240"/>
                     </a>
                 </div>
-                <div class="col-lg-4 text-center">Created<span
-                        class="icon decor mdi mdi-heart text-yellow">
-                                </span>by Makarov Dmitry
+                <div class="col-lg-4 text-center">
+                    Created by
+                    <span class="icon decor mdi mdi-heart text-yellow"></span>
+                    Makarov Dmitry
                 </div>
                 <div class="col-lg-4 text-lg-right text-center">
                     <p class="rights">
                         <span>&copy;&nbsp; </span>
-                        <span class="copyright-year">
-                                    </span>
+                        <span class="copyright-year"></span>
                         <span>.&nbsp;</span>
                         <span>All Rights Reserved.</span>
                     </p>

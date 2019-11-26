@@ -1,15 +1,16 @@
 {% extends 'base.html' %}
-{% include 'header.html' %}
 
 {% block content %}
+    {% include 'header.html' %}
+
     <section class="section section-md">
         <div class="container">
 
             <h3 class="text-center">Новости</h3>
 
             {% for n in range(10) %}
-                <div class="row row-xl-60 offset-xl wow fadeInUp" data-wow-delay=". {{ n }}s">
-                    <p>
+                <div class="row row-xl-60 offset-xl wow fadeInUp text" data-wow-delay=". {{ n }}s">
+                    <p class="text-justify">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sumenda potius quam
                         expetenda. Nihil opus est exemplis hoc facere longius.
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sumenda potius quam

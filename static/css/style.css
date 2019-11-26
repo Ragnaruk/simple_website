@@ -86,7 +86,7 @@ html p a:hover {
 
 .page {
     position: relative;
-    overflow: hidden;
+    /*overflow: hidden;*/
     min-height: 100vh;
     opacity: 0
 }
@@ -9467,4 +9467,30 @@ html:not(.ie-11):not(.ios) .parallax-disabled {
     font-size: 36px;
     line-height: 1.2;
     font-family: poppins, -apple-system, BlinkMacSystemFont, segoe ui, Roboto, helvetica neue, Arial, sans-serif
+}
+
+.text {
+    margin: 5px;
+}
+
+.sticky {
+    margin-top: 10px;
+}
+
+@media (min-width: 992px) {
+    html:not(.tablet):not(.mobile) .sticky {
+        margin-top: 10px;
+        position: sticky;
+        top: 10px;
+        z-index: 1;
+    }
+}
+
+.nav-button {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.nav-button:hover {
+  background-color: #1b1c4a;
 }
