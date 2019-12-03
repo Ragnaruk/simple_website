@@ -1,5 +1,35 @@
 {% extends 'base.html' %}
 
+{% block script %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js" integrity="sha256-xKeoJ50pzbUGkpQxDYHD7o7hxe0LaOGeguUidbq6vis=" crossorigin="anonymous"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let ctx = document.getElementById('priceChart');
+
+            let myLineChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: {{ price_labels|tojson }},
+                    datasets: [{
+                        label: "Price",
+                        data: {{ price_data|tojson }},
+                        backgroundColor: [
+                            "rgba(54, 162, 235, 0.2)"
+                        ]
+                    }]
+                },
+                options: {
+                    legend: {
+                        display: true
+                    }
+                }
+            });
+        }, false);
+    </script>
+
+{% endblock %}
+
 {% block content %}
     {% include 'header.html' %}
 
@@ -9,10 +39,7 @@
             <h3 class="text-center">График</h3>
 
             <div class="row row-xl-60 offset-xl wow fadeInUp text" data-wow-delay=". {{ n }}s">
-                <div class="layer" data-depth=".055">
-                    <img src="{{ url_for('static', filename='images/layout_graph.png') }}"
-                         alt="" width="100%"/>
-                </div>
+                <canvas id="priceChart"></canvas>
             </div>
         </div>
     </section>
