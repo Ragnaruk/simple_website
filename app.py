@@ -8,8 +8,34 @@ app = Flask(__name__)
 
 
 @app.route('/')
-def landing():
-    return render_template('landing.html')
+@app.route('/index')
+def index():
+    return render_template('index.html')
+
+
+@app.route('/blog')
+def blog():
+    return render_template('blog.html')
+
+
+@app.route('/blog-post1')
+def blog_post1():
+    return render_template('blog-post1.html')
+
+
+@app.route('/blog-post2')
+def blog_post2():
+    return render_template('blog-post2.html')
+
+
+@app.route('/blog-post3')
+def blog_post3():
+    return render_template('blog-post3.html')
+
+
+@app.route('/blog-post4')
+def blog_post4():
+    return render_template('blog-post4.html')
 
 
 @app.route('/graph')
@@ -38,16 +64,6 @@ def graph():
         price_labels=price_labels,
         price_data=price_data
     )
-
-
-@app.route('/news')
-def news():
-    return render_template('news.html')
-
-
-@app.route('/stats')
-def stats():
-    return render_template('stats.html')
 
 
 if __name__ == '__main__':

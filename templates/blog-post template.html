@@ -1,0 +1,119 @@
+{% extends 'base-blog.html' %}
+
+{% block content %}
+
+    <!-- Blog Post-->
+    <section class="section section-xl bg-default text-left">
+        <div class="container">
+            <div class="row row-70">
+                <div class="col-lg-8">
+                    <div class="blog-post">
+                        <!-- Post Classic-->
+                        <article class="post post-classic">
+                            <h4 class="post-classic-title">THE_TITLE
+                            </h4>
+                            <div class="post-classic-panel group-middle justify-content-start"><a
+                                    class="badge badge-secondary" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="16px"
+                                     height="27px" viewbox="0 0 16 27"
+                                     enable-background="new 0 0 16 27" xml:space="preserve">
+                        <path d="M0,0v6c4.142,0,7.5,3.358,7.5,7.5S4.142,21,0,21v6h16V0H0z"></path>
+                      </svg>
+                                <div>Новости</div>
+                            </a>
+
+                                <div class="post-classic-time"><span
+                                        class="icon fa fa-clock-o"></span>
+                                    <time datetime="2018-11-30">Nov 30, 2018</time>
+                                </div>
+                                <div class="post-classic-author">by<a href="#">AUTHOR</a></div>
+                            </div>
+                            <p class="post-classic-text">Текст 1</p>
+                            <div class="post-classic-figure"><img
+                                    src="{{ url_for('static', filename='images/post-1-770x430.jpg') }}"
+                                    alt="" width="770" height="430"/>
+                            </div>
+                        </article>
+
+                        <!-- Quote Classic-->
+                        <article class="quote-classic quote-classic-big">
+                            <div class="quote-classic-text">
+                                <p class="q">Дохуя цитата</p>
+                            </div>
+                        </article>
+
+                        <p>Текст 2</p>
+
+                        <div class="blog-post-bottom-panel group-md group-justify">
+                            <div class="blog-post-tags"><a href="#">Hostel</a><a href="#">News</a><a
+                                    href="#">Article</a></div>
+                            <div>
+                                <div class="group-md group-middle"><span
+                                        class="social-title">Share</span>
+                                    <div>
+                                        <ul class="list-inline list-inline-sm social-list">
+                                            <li><a class="icon fa fa-facebook" href="#"></a></li>
+                                            <li><a class="icon fa fa-twitter" href="#"></a></li>
+                                            <li><a class="icon fa fa-google-plus" href="#"></a></li>
+                                            <li><a class="icon fa fa-instagram" href="#"></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <!-- Post Sidebar-->
+                    <div class="post-sidebar post-sidebar-inset">
+                        <div class="row row-lg row-60">
+                            <div class="col-sm-6 col-lg-12">
+                                <div class="post-sidebar-item">
+                                    <!-- RD Search Form-->
+                                    <form class="rd-search form-search form-post-search"
+                                          action="search-results.html" method="GET">
+                                        <div class="form-wrap">
+
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="post-sidebar-item">
+                                    <h5>Категории</h5>
+                                    <div class="post-sidebar-item-inset">
+                                        <ul class="list list-categories">
+                                            <li><a class="active" href="#">Все</a></li>
+                                            <li><a href="#">Новости</a></li>
+                                            <li><a href="#">Статьи</a></li>
+                                            <li><a href="#">Интервью</a></li>
+                                            <li><a href="#">Аналитика</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="post-sidebar-item">
+                                    <h5>Популярное</h5>
+                                    <div class="post-sidebar-item-inset">
+                                        <!-- Post Minimal-->
+                                        <article class="post post-minimal"><a
+                                                class="post-minimal-figure" href="blog-post3"></a>
+                                            <p class="post-minimal-title"><a href="blog-post3">Маршалловы
+                                                Острова выпустят свою собственную криптовалюту</a>
+                                            </p>
+                                        </article>
+                                        <!-- Post Minimal-->
+                                        <article class="post post-minimal"><a
+                                                class="post-minimal-figure" href="blog-post3"></a>
+                                            <p class="post-minimal-title"><a href="blog-post3">Почему
+                                                юристы никак не договорятся о криптовалютах</a></p>
+                                        </article>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
