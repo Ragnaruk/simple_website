@@ -1,10 +1,15 @@
 {% extends 'base.html' %}
 
+{% block title %}
+    <title>Crypto Seer</title>
+{% endblock %}
+
 {% block content %}
 
     <!--Затемненная картинка с описанием-->
     <section class="section section-md bg-default text-center">
-        <div class="parallax-container" data-parallax-img="images/bg-cta-5.jpg">
+        <div class="parallax-container"
+             data-parallax-img="{{ url_for('static', filename='images/bg-cta-5.jpg') }}">
             <div class="parallax-content section-xl section-inset-custom-1 context-dark bg-overlay-2-21 bg-second-overlay-4-22">
                 <div class="container bg-overlay-4-22">
                     <h3 class="oh-desktop font-weight-normal"><span
