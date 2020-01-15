@@ -2,7 +2,8 @@
 https://coder-coder.com/build-flexbox-website-layout/
 """
 from flask import Flask, render_template, url_for
-from pathlib import Path
+from database import get_price
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -40,29 +41,18 @@ def blog_post4():
 
 @app.route('/graph')
 def graph():
-    with open(Path(__file__).parent / "data" / "price.csv", "r") as f:
-        price = f.read()
+    # 1578996628988 to 1579083004000
+    price = get_price("bitcoin", "1579007000000", "1579083004000")
+    labels = [datetime.utcfromtimestamp(int(p[0]) / 1000) for p in price]
+    data = [p[1] for p in price]
 
-    price_labels = []
-    price_data = []
-    for pr in price.split('\n'):
-        try:
-            d = pr.split(',')
-
-            price_labels.append(
-                d[0]
-            )
-
-            price_data.append(
-                d[4]
-            )
-        except Exception:
-            pass
+    print(labels)
+    print(data)
 
     return render_template(
         'graph.html',
-        price_labels=price_labels,
-        price_data=price_data
+        price_labels=labels,
+        price_data=data
     )
 
 
