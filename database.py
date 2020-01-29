@@ -2,6 +2,7 @@ import sqlite3
 import datetime
 import requests
 import json
+import time
 from pathlib import Path
 
 
@@ -54,20 +55,22 @@ def prepare_db_api():
 
     for coin in ["bitcoin", "ethereum", "litecoin", "eos", "ripple"]:
         response = requests.get(
-            "https://api.coingecko.com/api/v3/coins/{0}/market_chart?vs_currency=usd&days=1"
+            "https://api.coingecko.com/api/v3/coins/{0}/market_chart?vs_currency=usd&days=30"
                 .format(coin)
         )
 
         prices = json.loads(response.text)["prices"]
 
-        cursor.execute("CREATE TABLE {0} (btc_date text, btc_price real)".format(coin))
+        # For db creation
+        cursor.execute(f"CREATE TABLE {coin} (btc_date text, btc_price real)")
         conn.commit()
 
         for price in prices:
-            cursor.execute("INSERT INTO {0} VALUES ({1},{2})".format(coin, price[0], price[1]))
+            cursor.execute(f"INSERT INTO {coin} VALUES ({price[0]},{price[1]})")
         conn.commit()
 
-        print("Finished getting {0} prices for the last 24h.".format(coin))
+        print("Finished getting {0} prices for the last 30d.".format(coin))
+        print("Currect time: {}".format(int(time.time())))
 
 
 def get_price(coin, date_from, date_until):
