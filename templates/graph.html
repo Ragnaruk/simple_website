@@ -17,13 +17,22 @@
                 type: 'line',
                 data: {
                     labels: {{ price_labels|tojson }},
-                    datasets: [{
-                        label: "Price",
-                        data: {{ price_data|tojson }},
-                        backgroundColor: [
-                            "rgba(54, 162, 235, 0.2)"
-                        ]
-                    }]
+                    datasets: [
+                        {
+                            label: "Price",
+                            data: {{ price_data|tojson }},
+                            backgroundColor: [
+                                "rgba(54, 162, 235, 0.2)"
+                            ]
+                        },
+                        {
+                            label: "Prediction",
+                            data: {{ prediction_data }},
+                            backgroundColor: [
+                                "rgba(255, 140, 0, 0.2)"
+                            ]
+                        }
+                    ]
                 },
                 options: {
                     legend: {

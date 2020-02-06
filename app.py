@@ -2,11 +2,9 @@
 https://coder-coder.com/build-flexbox-website-layout/
 """
 from flask import Flask, render_template, url_for
-from datetime import datetime
-import time
+import json
 
-from graph import get_prediction
-from database import get_price
+from graph import get_graph_data
 
 app = Flask(__name__)
 
@@ -44,22 +42,20 @@ def blog_post4():
 
 @app.route('/graph')
 def graph():
-    # Current time
-    current_time = int(time.time()) * 1000
-
-    price = get_price("bitcoin", current_time - 86400000 * 2, current_time - 86400000)
-    labels = [datetime.utcfromtimestamp(int(p[0]) / 1000) for p in price]
-    data = [p[1] for p in price]
-    # prediction = get_prediction(data)
+    labels, data, prediction_data = get_graph_data()
 
     return render_template(
         'graph.html',
         price_labels=labels,
         price_data=data,
-        # prediction_lables=prediction,
-        # prediction_data=prediction
+        prediction_data=prediction_data
     )
 
 
+@app.route('/api/graph')
+def graph_update():
+    return json.dumps(get_graph_data())
+
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, threaded=False)

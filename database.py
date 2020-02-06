@@ -53,17 +53,21 @@ def prepare_db_api():
     conn = sqlite3.connect("mydatabase.db")
     cursor = conn.cursor()
 
-    for coin in ["bitcoin", "ethereum", "litecoin", "eos", "ripple"]:
+    # for coin in ["bitcoin", "ethereum", "litecoin", "eos", "ripple"]:
+    for coin in ["bitcoin"]:
         response = requests.get(
-            "https://api.coingecko.com/api/v3/coins/{0}/market_chart?vs_currency=usd&days=30"
+            "https://api.coingecko.com/api/v3/coins/{0}/market_chart?vs_currency=usd&days=2"
                 .format(coin)
         )
 
         prices = json.loads(response.text)["prices"]
 
         # For db creation
-        cursor.execute(f"CREATE TABLE {coin} (btc_date text, btc_price real)")
-        conn.commit()
+        try:
+            cursor.execute(f"CREATE TABLE {coin} (btc_date text, btc_price real)")
+            conn.commit()
+        except:
+            pass
 
         for price in prices:
             cursor.execute(f"INSERT INTO {coin} VALUES ({price[0]},{price[1]})")

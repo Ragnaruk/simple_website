@@ -3,15 +3,18 @@ https://medium.com/@randerson112358/stock-price-prediction-using-python-machine-
 """
 import math
 import numpy as np
-import pandas as pd
 import pickle
 from sklearn.preprocessing import MinMaxScaler
-from keras.models import Sequential, load_model
+from keras.models import Sequential
+from tensorflow.keras.models import load_model
 from keras.layers import Dense, LSTM
 import matplotlib.pyplot as plt
 from datetime import datetime
+import time
+import requests
+import json
 
-from database import get_price
+from database import get_price, prepare_db_api
 
 plt.style.use('fivethirtyeight')
 
@@ -141,8 +144,7 @@ def get_prediction(data: list):
     scaled_data = scaler.fit_transform(dataset)
     # print("scaled_data: ", scaled_data)
 
-    # Test data set
-    test_data = scaled_data[training_data_len - 60:, :]
+    test_data = scaled_data[len(data) - 60 - 20:, :]
 
     x_test = []
     for i in range(60, len(test_data)):
@@ -157,7 +159,28 @@ def get_prediction(data: list):
     return pred_price
 
 
-if __name__ == '__main__':
+def get_graph_data():
+    response = requests.get(
+        "https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=5"
+    )
+    prices = json.loads(response.text)["prices"]
+
+    labels = [datetime.utcfromtimestamp(int(p[0]) / 1000) for p in prices]
+    data = [p[1] for p in prices]
+
+    prediction_data = get_prediction(data)
+    prediction_data = [data[0] for data in prediction_data]
+
+    data[len(data) - len(prediction_data):] = [None for i in range(len(prediction_data))]
+    prediction_data = [None for i in range(len(data) - len(prediction_data))] + prediction_data
+
+    print(data)
+    print(prediction_data)
+
+    return labels, data, prediction_data
+
+
+def test():
     # Timestamps from current day to the first
     # 1580292247000
     # 1580205847000
@@ -206,11 +229,16 @@ if __name__ == '__main__':
 
     with open('data/nn_info.pickle', 'rb') as file:
         training_data_len, filename = pickle.load(file)
+        print(training_data_len, filename)
+    #
+    # # Testing nn
+    # price = get_price("bitcoin", "1577786647000", "1580292247000")
+    # labels = [datetime.utcfromtimestamp(int(p[0]) / 1000) for p in price]
+    # data = [p[1] for p in price]
+    #
+    # test_nn(data, labels, training_data_len, filename)
+    # # print(get_prediction(data))
 
-    # Testing nn
-    price = get_price("bitcoin", "1577786647000", "1580292247000")
-    labels = [datetime.utcfromtimestamp(int(p[0]) / 1000) for p in price]
-    data = [p[1] for p in price]
 
-    test_nn(data, labels, training_data_len, filename)
-    # print(get_prediction(data))
+if __name__ == '__main__':
+    get_graph_data()
