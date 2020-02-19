@@ -173,11 +173,11 @@ def get_graph_data():
     prediction_data = get_prediction(data)
 
     # Adding empty points to print two lines on one graph
-    # data[len(data) - len(prediction_data):] = [None for i in range(len(prediction_data))]
+    data[len(data) - len(prediction_data):] = [None for i in range(len(prediction_data))]
     prediction_data = [None for i in range(len(data) - len(prediction_data))] + prediction_data
 
-    print(data)
-    print(prediction_data)
+    # print(data)
+    # print(prediction_data)
 
     return labels, data, prediction_data
 
