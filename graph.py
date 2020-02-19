@@ -154,7 +154,9 @@ def get_prediction(data: list):
     x_test = np.reshape(x_test, (x_test.shape[0], x_test.shape[1], 1))
 
     pred_price = model.predict(x_test)
+
     pred_price = scaler.inverse_transform(pred_price)
+    pred_price = [float(data[0]) for data in pred_price]
 
     return pred_price
 
@@ -169,9 +171,9 @@ def get_graph_data():
     data = [p[1] for p in prices]
 
     prediction_data = get_prediction(data)
-    prediction_data = [data[0] for data in prediction_data]
 
-    data[len(data) - len(prediction_data):] = [None for i in range(len(prediction_data))]
+    # Adding empty points to print two lines on one graph
+    # data[len(data) - len(prediction_data):] = [None for i in range(len(prediction_data))]
     prediction_data = [None for i in range(len(data) - len(prediction_data))] + prediction_data
 
     print(data)
